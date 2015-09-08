@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Assignment</title>
+    <script src="js/lib/underscore-1.3.3.min.js"></script>
+    <script src="js/lib/jquery-1.8.0.min.js"></script>
+    <script src="js/lib/jquery-ui-1.8.23.custom.min.js"></script>
+    <script src="js/lib/backbone-0.9.2.min.js"></script>
+    <script src="js/Wewana.js"></script>
+
+    <!-- Template for Event Manager View -->
+    <script type="text/template" id="event-manager-template">
+        <h1>Add an Event</h1>
+        <form id="entry-form" action="#">
+            <label for="title-entry">Title:</label><input type="text" name="title" id="title-entry"/><br>
+            <label for="start-entry">Start Date:</label><input type="text" class="datepicker" name="start" id="start-entry"><br>
+            <label for="end-entry">End Date:</label><input type="text" class="datepicker" name="end" id="end-entry"/><br>
+            <label for="organiser-entry">Organizer:</label><input type="text" name="organiser" id="organiser-entry"/><br>
+            <label for="attendees-entry">Attendee Names:</label><input type="text" name="attendees" id="attendees-entry"/><br>
+            <label for="description-entry">Description:</label><textarea name="description" id="description-entry"></textarea><br>
+            <input type="submit" value="Submit"/>
+        </form>
+        <div id="main-viewer-panel"></div>
+        <div id="event-detail-viewer" style="position: absolute; top:0; right:0; min-height:200px; width: 200px; border: 1px;"></div>
+    </script>
+
+    <!-- Template for Event Manager View -->
+    <script type="text/template" id="event-list-template">
+        <ul></ul>
+    </script>
+
+    <!-- Template for Event View -->
+    <script type="text/template" id="event-template">
+        <h3 class="event-title"><a class="event-detail-link" href=""><%= title %></a></h3>
+        <h4 class="event-organiser"><%= organiser %></h4>
+        <h4 class="event-attendees"> Attendees: <%= attendee_names.length %></h4>
+        <p class="event-description"><%= description %></p>
+        <hr/>
+    </script>
+
+    <!-- Template for Event Details  -->
+    <script type="text/template" id="event-details-template">
+        <a class="dismiss-button" href="#">Dismiss</a>
+        <h3 class="event-title"><a href=""><%= title %></a></h3>
+        <h4 class="event-organiser"><%= organiser %></h4>
+        <h4 class="event-attendees"><%= attendee_names.length %> Attendees</h4>
+        <ol>
+            <% _.each(attendee_names, function(attendee) { %>
+            <li><%= attendee %></li>
+            <% }); %>
+        </ol>
+        <p class="event-description"><%= description %></p>
+    </script>
+
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+
